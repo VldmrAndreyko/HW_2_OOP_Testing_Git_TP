@@ -1,8 +1,10 @@
+from packaging.pylock import is_valid_pylock_path
+
 from Ingredient import Ingredient
 
 
 class Recipe:
-    def __init__(self, title: str, ingredients: list[Ingredient]):
+    def __init__(self, title: str, ingredients: list[Ingredient] = None):
         self.title = title
         if ingredients is None:
             self.ingredients = []
@@ -25,6 +27,10 @@ class Recipe:
             return False
 
     def scale(self, ratio: float):
+
+        if not self.is_valid_ratio(ratio):
+            raise ValueError("Количество порций должно быть положительным числом")
+
         new_ingredients = []
 
         for i in self.ingredients:
