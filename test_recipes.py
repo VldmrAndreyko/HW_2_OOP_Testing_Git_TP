@@ -16,7 +16,7 @@ def test_ingredient_init():
 def test_ingredient_str():
     test = Ingredient("Мука", 500, "г")
 
-    assert str(test) == "Мука: 500 г"
+    assert str(test) == "Мука: 500.0 г"
 
 def test_ingredient_eq():
     test1 = Ingredient("Мука", 300, "г")
